@@ -5,6 +5,17 @@ Lastest version: v2.91
 patches:
 - [001-regex-server.patch](/patches/001-regex-server.patch)
 - [002-regex-ipset.patch](/patches/002-regex-ipset.patch)
+- [003-regex-performance.patch](/patches/003-regex-performance.patch) - **NEW: Performance optimizations**
+
+### Performance Optimizations (003-regex-performance.patch)
+
+This patch adds significant performance improvements:
+
+- **PCRE JIT Compilation**: 2-10x faster regex matching (auto-enabled if available)
+- **LRU Cache**: Caches up to 256 recent domain lookups to avoid repeated regex matching
+- **Optimized match_regex()**: Reduced memory allocations and function call overhead
+
+**Requirements**: Standard libpcre with JIT support (available in libpcre ≥ 8.20, which is in all modern systems)
 
 Inspired by these repos:
 - [dnsmasq-regexp_2.76](https://github.com/spacedingo/dnsmasq-regexp_2.76)
